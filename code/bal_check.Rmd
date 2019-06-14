@@ -1,0 +1,27 @@
+---
+title: "First Debate Balance Check"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r main}
+#Config
+wd <- "~/Documents/github/"
+# Read data in
+df <- read.csv(paste0(wd, 'dem_debate2020/data/debate2020.csv'), header = T)
+
+# Create rank
+df$rank <- rev(rank(df$standing))
+
+# Check Data
+print(df)
+
+# Check balance
+bal <- glm(purple ~ standing, data = df, family = "binomial")
+summary(bal)
+
+```
