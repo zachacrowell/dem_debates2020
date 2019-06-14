@@ -15,7 +15,7 @@ wd <- "~/Documents/github/"
 df <- read.csv(paste0(wd, 'dem_debate2020/data/debate2020.csv'), header = T)
 
 # Create rank
-df$rank <- rev(rank(df$standing))
+df$rank <- rank(df$standing)
 
 # Check Data
 print(df)
